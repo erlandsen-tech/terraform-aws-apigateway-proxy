@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "this" {
   }
 
   dynamic "statement" {
-    for_each = length(var.ip_whitelist) != 0 && length(local.source_vpc_endpoints) != 0 ? toset([1]) : toset([])
+    for_each = length(rvar.ip_whitelist) != 0 && length(local.source_vpc_endpoints) != 0 ? toset([1]) : toset([])
 
     content {
       actions   = ["execute-api:Invoke"]
@@ -100,7 +100,7 @@ resource "aws_api_gateway_rest_api" "this" {
   binary_media_types = var.binary_media_types
 
   endpoint_configuration {
-    ip_address_type  = var.ip_address_type != null ? var.ip_address_type : (var.endpoint_type == "PRIVATE" ? "dualstack" : "ipv4")
+    ip_address_type  = var.ip_address_type
     types            = [var.endpoint_type]
     vpc_endpoint_ids = var.associate_vpc_endpoints
   }

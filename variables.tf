@@ -79,7 +79,7 @@ variable "endpoint_type" {
 }
 
 variable "ip_address_type" {
-  description = "IP address type for the API Gateway endpoint. Must be ipv4 for REGIONAL/EDGE, or dualstack for PRIVATE endpoints."
+  description = "IP address type for the API Gateway endpoint. Must be dualstack for PRIVATE endpoints."
   type        = string
   default     = null
 }
