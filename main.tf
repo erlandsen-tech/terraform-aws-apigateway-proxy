@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "this" {
   }
 
   dynamic "statement" {
-    for_each = length(rvar.ip_whitelist) != 0 && length(local.source_vpc_endpoints) != 0 ? toset([1]) : toset([])
+    for_each = length(var.ip_whitelist) != 0 && length(local.source_vpc_endpoints) != 0 ? toset([1]) : toset([])
 
     content {
       actions   = ["execute-api:Invoke"]
