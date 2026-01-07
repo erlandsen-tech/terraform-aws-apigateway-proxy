@@ -78,6 +78,12 @@ variable "endpoint_type" {
   default     = "REGIONAL"
 }
 
+variable "ip_address_type" {
+  description = "IP address type for the API Gateway endpoint. Must be dualstack for PRIVATE endpoints."
+  type        = string
+  default     = null
+}
+
 variable "ip_whitelist" {
   description = "List of IP addresses that can reach the api."
   type        = list(string)
